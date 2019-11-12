@@ -4,6 +4,8 @@ import 'package:digital_wallet/widgets/default_width_spacing.dart';
 import 'package:digital_wallet/widgets/section_with_title.dart';
 import 'package:flutter/material.dart';
 
+import 'constants.dart';
+
 class WalletPage extends StatefulWidget {
   @override
   _WalletPageState createState() => _WalletPageState();
@@ -65,9 +67,23 @@ class _WalletPageState extends State<WalletPage> {
             padding: EdgeInsets.all(20),
             child: Column(
               children: <Widget>[
-                CustomTextField(),
+                CustomTextField(
+                  label: 'Disponível para investir',
+                  value: '134,69',
+                  prefix: Text(
+                    'R\$',
+                    style: kRealPrefix,
+                  ),
+                ),
                 DefaultHeightSpacing(),
-                CustomTextField(),
+                CustomTextField(
+                  label: 'A liquidar',
+                  value: '555,55',
+                  prefix: Text(
+                    'R\$',
+                    style: kRealPrefix,
+                  ),
+                ),
                 DefaultHeightSpacing(),
                 DefaultHeightSpacing(),
                 SectionWithTitle(
