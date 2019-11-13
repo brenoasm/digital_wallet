@@ -1,3 +1,5 @@
+import 'package:digital_wallet/dataModels/ConsolidatedPosition.dart';
+import 'package:digital_wallet/widgets/consolidated_position_tile.dart';
 import 'package:digital_wallet/widgets/custom_text_field.dart';
 import 'package:digital_wallet/widgets/default_height_spacing.dart';
 import 'package:digital_wallet/widgets/default_width_spacing.dart';
@@ -12,6 +14,22 @@ class WalletPage extends StatefulWidget {
 }
 
 class _WalletPageState extends State<WalletPage> {
+  List<ConsolidatedPosition> consolidatedPositions = [];
+
+  _WalletPageState() {
+    consolidatedPositions.addAll([
+      ConsolidatedPosition(
+          color: Color(0xFF00BDC4),
+          title: '',
+          grossBalance: '3.860.941,34',
+          items: <Widget>[
+            Text('Item 1'),
+            Text('Item 2'),
+            Text('Item 3'),
+          ]),
+    ]);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,19 +106,36 @@ class _WalletPageState extends State<WalletPage> {
                 DefaultHeightSpacing(),
                 SectionWithTitle(
                   title: 'CARTEIRA DE INVESTIMENTOS',
-                  child: Text('Temporario'),
+                  child: Text('Gráfico de Pizza'),
                 ),
                 DefaultHeightSpacing(),
                 DefaultHeightSpacing(),
                 SectionWithTitle(
                   title: 'POSIÇÃO CONSOLIDADA',
-                  child: Text('Temporario'),
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: consolidatedPositions.length,
+                    itemBuilder: (context, index) {
+                      ConsolidatedPosition _consolidatedPosition =
+                          consolidatedPositions[index];
+
+                      return ConsolidatedPositionTile(
+                        consolidatedPosition: _consolidatedPosition,
+                      );
+                    },
+                  ),
                 ),
                 DefaultHeightSpacing(),
                 DefaultHeightSpacing(),
                 SectionWithTitle(
                   title: 'EVOLUÇÃO PATRIMONIAL',
-                  child: Text('Temporario'),
+                  child: Text('Gráfico'),
+                ),
+                DefaultHeightSpacing(),
+                DefaultHeightSpacing(),
+                SectionWithTitle(
+                  title: 'RENTABILIDADE DA CARTEIRA',
+                  child: Text('Gráfico'),
                 ),
                 DefaultHeightSpacing(),
                 DefaultHeightSpacing(),
